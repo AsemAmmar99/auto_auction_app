@@ -27,7 +27,11 @@ class HomeLayout extends StatelessWidget {
               fontSize: 14.sp,
             ),
           ),
-          body: sl<AppCubit>().screens[sl<AppCubit>().currentIndex],
+          body: BlocBuilder<AppCubit, AppState>(
+            builder: (context, state) {
+              return sl<AppCubit>().screens[sl<AppCubit>().currentIndex];
+            },
+          ),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.shifting,
             currentIndex: sl<AppCubit>().currentIndex,
